@@ -18,7 +18,7 @@
  * @date 2021-07-27
  */
 
-#include <stdio.h>
+#include <cstdio>
 
 void reverse(int array[], int length, int p);
 void RCR(int array0[], int m, int n);

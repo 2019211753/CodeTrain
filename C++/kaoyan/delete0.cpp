@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <malloc.h>
+#include <iostream>
 
+using namespace std;
 /*
  * 考研中的顺序表删除
  * 熟悉一下

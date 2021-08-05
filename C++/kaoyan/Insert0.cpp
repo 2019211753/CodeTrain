@@ -12,7 +12,7 @@
  * @date 2021-07-27
  */
 
-#include <stdio.h>
+#include <cstdio>
 
 void insert(int *array, int length, int num);
 int findTheKeyOrTheSmaller(int *array, int begin, int end, int num);

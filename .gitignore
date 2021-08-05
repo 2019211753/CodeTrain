@@ -2,3 +2,5 @@
 /lib/
 /CodeTrain.iml
 CMakeLists.txt
+/cmake-build-debug/
+/out/
