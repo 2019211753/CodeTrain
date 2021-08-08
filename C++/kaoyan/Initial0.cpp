@@ -10,13 +10,14 @@ using namespace std;
 
 typedef struct List {
     int value;
+    List *front;
     List *next;
 } List;
 
 /*
- * 头插法
+ * 头插法建立单链表
  */
-void initialHead(List *&list, int array[], int n) {
+void initialHeadSingle(List *&list, int array[], int n) {
     list = (List*) malloc(sizeof (List));
     list->value = n;
     list->next = nullptr;
@@ -29,9 +30,9 @@ void initialHead(List *&list, int array[], int n) {
 }
 
 /*
- * 尾插法
+ * 尾插法建立单链表
  */
-void initialTail(List *&list, int array[], int n) {
+void initialTailSingle(List *&list, int array[], int n) {
     list = (List*) malloc(sizeof (List));
     list->value = n;
     list->next = nullptr;
@@ -39,6 +40,43 @@ void initialTail(List *&list, int array[], int n) {
     for (int i = 0; i < n; i++) {
         List *newList = (List*) malloc(sizeof (List));
         newList->value = array[i];
+        now->next = newList;
+        now = now->next;
+    }
+    now->next = nullptr;
+}
+
+/*
+ * 头插法建立双链表
+ */
+void initialHeadDouble(List *&list, int array[], int n) {
+    list = (List*) malloc(sizeof (List));
+    list->value = n;
+    list->front = nullptr;
+    list->next = nullptr;
+    for (int i = 0; i < n; i++) {
+        List *newList = (List*) malloc(sizeof (List));
+        newList->value = array[i];
+        newList->next = list->next;
+        newList->front = list;
+        list->next->front = newList;
+        list->next = newList;
+    }
+}
+
+/*
+ * 尾插法建立双链表
+ */
+void initialTailDouble(List *&list, int array[], int n) {
+    list = (List*) malloc(sizeof (List));
+    list->value = n;
+    list->front = nullptr;
+    list->next = nullptr;
+    List *now = list;
+    for (int i = 0; i < n; i++) {
+        List *newList = (List*) malloc(sizeof (List));
+        newList->value = array[i];
+        newList->front = now;
         now->next = newList;
         now = now->next;
     }
@@ -57,7 +95,7 @@ void output(List *list) {
 int main() {
     List *list;
     int array[4] = {1, 2, 3, 4};
-    initialHead(list, array, 4);
+    initialTailDouble(list, array, 4);
     output(list);
 }
 
