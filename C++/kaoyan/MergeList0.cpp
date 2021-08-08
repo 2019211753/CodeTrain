@@ -40,8 +40,9 @@ void initialTail(List *&list, int array[], int n) {
  * list1 链表1
  * list2 链表2
  */
-List* mergeTwoLists(List* l1, List* l2) {
+void mergeTwoLists(List *l1, List *l2, List *&L3 ) {
     List *head = l1;
+    L3 = l1;
     List *L1 = l1->next;
     List *L2 = l2->next;
     while (L1 != nullptr && L2 != nullptr) {
@@ -61,7 +62,6 @@ List* mergeTwoLists(List* l1, List* l2) {
     if (L2 != nullptr) {
         l1->next = L2;
     }
-    return head;
 }
 void output(List *list) {
     list = list->next;
@@ -76,10 +76,13 @@ int main() {
     List *list;
     int array[3] = {1, 2, 4};
     initialTail(list, array, 3);
+
     List *list2;
     int array1[4] = {1, 3, 4};
     initialTail(list2, array1, 3);
-    mergeTwoLists(list, list2);
-    output(list);
+
+    List *list3;
+    mergeTwoLists(list, list2, list3);
+    output(list3);
 
 }
